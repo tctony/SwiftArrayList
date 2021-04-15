@@ -95,8 +95,8 @@ public class ArrayList<T> : Sequence {
 
     @inlinable
     @discardableResult
-    public func filter(includeElement: (T) -> Bool,
-                                  inPlace: Bool = true) -> ArrayList<T> {
+    public func filterInPlace(includeElement: (T) -> Bool,
+                              inPlace: Bool = true) -> ArrayList<T> {
         if inPlace {
             self.elements = self.elements.filter(includeElement)
             return self
