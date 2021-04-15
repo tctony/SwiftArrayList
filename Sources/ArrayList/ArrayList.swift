@@ -93,7 +93,9 @@ public class ArrayList<T> : Sequence {
         elements.reverse()
     }
 
-    @inlinable public func filter(includeElement: (T) -> Bool,
+    @inlinable
+    @discardableResult
+    public func filter(includeElement: (T) -> Bool,
                                   inPlace: Bool = true) -> ArrayList<T> {
         if inPlace {
             self.elements = self.elements.filter(includeElement)
