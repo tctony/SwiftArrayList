@@ -93,16 +93,14 @@ public class ArrayList<T> : Sequence {
         elements.reverse()
     }
 
-    @inlinable public func filter(includeElement: (T) -> Bool) -> ArrayList<T> {
-        return ArrayList(elements.filter(includeElement))
-    }
-
-    @inlinable public func map<U>(transform: (T) -> U) -> ArrayList<U> {
-        return ArrayList<U>(elements.map(transform))
-    }
-
-    @inlinable public func reduce<U>(initial: U, combine: (U, T) -> U) -> U {
-        return elements.reduce(initial, combine)
+    @inlinable public func filter(includeElement: (T) -> Bool,
+                                  inPlace: Bool = true) -> ArrayList<T> {
+        if inPlace {
+            self.elements = self.elements.filter(includeElement)
+            return self
+        } else {
+            return ArrayList(self.elements.filter(includeElement))
+        }
     }
 
     // MARK: -
